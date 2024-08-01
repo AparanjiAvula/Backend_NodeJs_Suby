@@ -48,7 +48,7 @@ const vendorLogin=async(req,res)=>{
 const getAllVendors=async(req,res)=>{
     try{
           const vendors=await vendorModel.find().populate('firm');
-          return res.status(200).send(vendors);
+          return res.status(200).send({vendors});
     }catch(e){
         return res.status(501).send({msg:"something went wrong",errMsg:e.message})
     }
