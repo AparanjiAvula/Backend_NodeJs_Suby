@@ -24,7 +24,7 @@ mongoose.connect(process.env.Mongo_url)
 .then(()=>console.log('Database connected successfully'))
 .catch((err)=>console.log(err))
 
-const PORT=4000;
+const PORT=process.env.port||4000;
 
 app.get('/',(req,res)=>{
     res.send('<h1>Hello</h1>');
