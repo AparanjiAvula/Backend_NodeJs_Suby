@@ -27,7 +27,7 @@ mongoose.connect(process.env.Mongo_url)
 const PORT=process.env.port||4000;
 
 app.get('/',(req,res)=>{
-    res.send('<h1>Hello</h1>');
+    res.send('<h1>Hello WellCome to SUBY</h1>');
 })
 
 app.listen(PORT,()=>{
