@@ -5,6 +5,8 @@ const vendorRouter=require('./routes/vendorRoute.js');
 const bodyParser=require('body-parser');
 const firmRouter=require('./routes/firmRoute.js')
 const productRouter=require('./routes/productRoute.js');
+const cors=require('cors');
+
 dotenv.config();
 
 const app=express();
@@ -12,6 +14,7 @@ const app=express();
 
 
 app.use(express.json());
+app.use(cors());
 // middlewares
 app.use(bodyParser.json());
 app.use('/vendor',vendorRouter);
