@@ -38,7 +38,11 @@ const vendorLogin=async(req,res)=>{
             return res.status(401).send({msg:'Invalid email or password'})
          }
          const token=jwt.sign({vendorId:found._id},process.env.secret_key,{expiresIn:"7d"});
-         res.status(200).send({msg:"Login Successfully",token});
+    
+         const vendorId=found._id;
+         const firm=found.firm
+         res.status(200).json({msg:"Login Successfully",token,vendorId,firm});
+        //  console.log(vendorId,token);
     }catch(e){
         res.status(500).send({msg:"something went wrong"});
     }
@@ -56,13 +60,19 @@ const getAllVendors=async(req,res)=>{
 
 
 const getVendorById=async(req,res)=>{
-      const vendorId=req.params.id;
+
+      const vendorId=req.params.vendorId;
     try{
          const vendor=await vendorModel.findById(vendorId).populate('firm');
+         
          if(!vendor){
-            return res.status(404).send({msg:"Vendor nor found"})
-         }  
-         return res.status(200).send(vendor);
+            return res.status(404).send({msg:"Vendor not found"})
+         } 
+     
+         const vendorFirmId=vendor.firm[0]._id; 
+         
+         res.status(200).send({vendor,vendorFirmId});
+        
     }catch(e){
         return res.status(501).send({msg:"something went wrong",errMsg:e.message})
     }

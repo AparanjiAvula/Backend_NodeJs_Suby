@@ -8,5 +8,5 @@ vendorRouter.post('/register',vendorRegister);
 vendorRouter.post('/login',vendorLogin);
 
 vendorRouter.get('/getAllvendors',getAllVendors);
-vendorRouter.get('/getVendor/:id',getVendorById);
+vendorRouter.get('/getVendor/:vendorId',getVendorById);
 module.exports=vendorRouter;
