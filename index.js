@@ -28,11 +28,12 @@ mongoose.connect(process.env.Mongo_url)
 .catch((err)=>console.log(err))
 
 const PORT=process.env.port||4000;
+const hostName=process.env.hostName;
 
 app.get('/',(req,res)=>{
     res.send('<h1>Hello WellCome to SUBY</h1>');
 })
 
 app.listen(PORT,()=>{
-    console.log(`server started at http://localhost:${PORT}`);
+    console.log(`server started at http://${hostName}:${PORT}`);
 })
